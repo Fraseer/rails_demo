@@ -1,4 +1,3 @@
-
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -18,4 +17,3 @@ production:
   database: rails_demo_production
   username: rails_demo
   password: <%= ENV['RAILS_DEMO_DATABASE_PASSWORD'] %>
-
