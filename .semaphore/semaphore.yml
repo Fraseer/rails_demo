@@ -27,7 +27,9 @@ blocks:
             - 'bundle exec rails db:setup'
             - bundle exec rspec
       epilogue:
-        always:
+        on_pass:
           commands:
-            - '''exitcode=$(if [ "$SEMAPHORE_JOB_RESULT" == "passed" ]; then echo 0; else echo 1; fi)'''
+            - echo 0
+        on_fail:
+          commands:
             - ./cc-test-reporter after-build --exit-code $exitcode
