@@ -27,9 +27,12 @@ blocks:
             - 'bundle exec rails db:setup'
             - bundle exec rspec
       epilogue:
+        always:
+          commands:
+            - ./cc-test-reporter after-build --exit-code $exitcode
         on_pass:
           commands:
             - echo 0
         on_fail:
           commands:
-            - ./cc-test-reporter after-build --exit-code $exitcode
+            - echo 1
