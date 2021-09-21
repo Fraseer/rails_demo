@@ -25,12 +25,12 @@ blocks:
             - ./cc-test-reporter before-build
             - bundle update --bundler
             - bundle install
-            - 'bundle exec rails db:setup'
+            - 'bundle exec rails db:create db:migrate'
             - bundle exec rspec
       epilogue:
         always:
           commands:
-            - ./cc-test-reporter format-coverage -t simplecov -o  coverage/.resultset.json
+            - ./cc-test-reporter format-coverage -t simplecov -o coverage/.resultset.json
         on_pass:
           commands:
             - ./cc-test-reporter after-build --exit-code 0
