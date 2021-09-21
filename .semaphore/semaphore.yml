@@ -20,10 +20,10 @@ blocks:
             - checkout
             - sem-service start postgres 11
             - sem-version ruby 3.0.0
-            - bundle install --path vendor/bundle
             - 'curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter'
             - chmod +x ./cc-test-reporter
             - ./cc-test-reporter before-build
+            - bundle install --path vendor/bundle
             - 'bundle exec rake db:setup'
             - bundle exec rspec
       epilogue:
